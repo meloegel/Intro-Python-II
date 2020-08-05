@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -38,8 +39,46 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+player_name = input('Enter your name:')
+player_room = room['outside']
+player = Player(player_name, player_room)
+print(player)
 
 # Write a loop that:
+while True:
+
+    current_room = player.location
+    print(f'Current location: {current_room.name}. Room description: {current_room.description}')
+    print('Where would you like to go? (Enter n, s, e, w or q to quit')
+    command = input('>').split(',')
+
+    if command[0] == 'q':
+        print(f'Goodbye {player_name}')
+        break
+    elif command[0] == 'n':
+        if hasattr(current_room, 'n_to'):
+            print('Moving north')
+            player.location = current_room.n_to
+        else:
+            print('Location does not exist')
+    elif command[0] == 's':
+        if hasattr(current_room, 's_to'):
+            print('Moving south')
+            player.location = current_room.s_to
+        else:
+            print('Location does not exist')
+    elif command[0] == 'e':
+        if hasattr(current_room, 'e_to'):
+            print('Moving east')
+            player.location = current_room.e_to
+        else:
+            print('Location does not exist')
+    elif command[0] == 'w':
+        if hasattr(current_room, 'w_to'):
+            print('Moving west')
+            player.location = current_room.w_to
+        else:
+            print('Location does not exist')        
 #
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
