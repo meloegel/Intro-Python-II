@@ -77,9 +77,7 @@ player_name = input('Enter your name:')
 player_room = room['outside']
 player = Player(player_name, player_room)
 
-# Write a loop that:
-while True:
-    print('''
+print('''
  __       __            __                                                    ________                                       __                     
 |  \  _  |  \          |  \                                                  |        \                                     |  \                    
 | $$ / \ | $$  ______  | $$  _______   ______   ______ ____    ______         \$$$$$$$$______   ______  __     __   ______  | $$  ______    ______  
@@ -91,6 +89,9 @@ while True:
  \$$      \$$  \$$$$$$$ \$$  \$$$$$$$  \$$$$$$  \$$  \$$  \$$  \$$$$$$$          \$$  \$$       \$$$$$$$    \$      \$$$$$$$ \$$  \$$$$$$$ \$$      
                                                                                                                                                                                                                                                                                           
  ''')
+# Write a loop that:
+while True:
+    print('---------------------------------------------------------------------------')
     current_room = player.location
     player_backpack = [x.name for x in player.backpack] if len(player.backpack) else 'Nothing'
     room_items = [x.name for x in current_room.item] if len(current_room.item) else 'Nothing'
